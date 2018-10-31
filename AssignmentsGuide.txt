@@ -1,0 +1,51 @@
+
+First we are Creating netwrok stack.
+
+  Stack is created,need to add resources to that. The are as follows:
+    a) VPC
+    b) IntergerGateway
+        1) Internet gateway atached to VPC
+    c) Route Table(refered to VPC)
+        1) routes are defined
+    d)Subnet is defined
+    e) Make table -- >Subnet is  association with route table -->ex  "SubnetId" : { "Ref" : "myPubSubnet1" },
+                                                                     "RouteTableId" : { "Ref" : "routeTable1" }
+        Similarly, we can repeat d and e for other subnet and attach association
+        In our assignment we have created two route tables, each for 3 private and 3 public
+    f) DBS group is created ---- >DBS subnet group for RDS, we can associate subnet with this group,
+       In our case we added 2 private subnets
+    g) Security Groups define:
+        1) Security Group is created for web server,
+           Enable HTTP access via port 80,
+           SSH access via port 22,
+           HTTPS access via port 443,
+           NodeJS access via port 3000"
+           // In this we are allowing incoming traffic from anywhere from the world to the above mentioned ports
+        
+        2) DB security Group,
+           allows ingress traffic only from Web App,port 3306
+           CIDR block--------- ???
+    
+
+    This is the end of the network Stack JSON, now we are exporting the VPC,
+    // better way is not to import the files and directly
+    security group ids, and subnets. Now we will go to the application stack
+
+
+    Application Stack:
+
+    a) Define Paramters name: of all the resources that you have and will be creating.
+        ex: Stackname, dbSubnet,s3Domain
+        
+
+
+
+
+
+
+--------------need to read------------
+
+1) How route table is defined destination cidr block, IG etc.
+2) CIDR block for DB
+
+
