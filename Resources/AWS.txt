@@ -47,7 +47,28 @@ Hypervisor: A thin layer of software called a hypervisordecouples the virtual ma
 
 EC2 advantages:
 
-Elastic Computing • Complete Control • Flexibility • Reliable • Secure • Pay-as-you-go • Integrated* • Easy to Start
+• Elastic Computing 
+• Complete Control 
+• Flexibility 
+• Reliable 
+• Secure 
+• Pay-as-you-go 
+• Integrated* 
+• Easy to Start
+
+EC2 Types:
+1) General Purpose
+2) Compute Optimized
+3) Memory Optimized
+4) Acclerated Computing
+5) Storage Optimized
+
+EC2 Various pricing models 
+• On-Demand
+• Spot Instances
+• Reserved Instances
+• Dedicated Hosts
+• Dedicated Instances
 
 
 
