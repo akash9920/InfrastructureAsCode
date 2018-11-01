@@ -47,7 +47,40 @@ Hypervisor: A thin layer of software called a hypervisordecouples the virtual ma
 
 EC2 advantages:
 
-Elastic Computing • Complete Control • Flexibility • Reliable • Secure • Pay-as-you-go • Integrated* • Easy to Start
+• Elastic Computing 
+• Complete Control 
+• Flexibility 
+• Reliable 
+• Secure 
+• Pay-as-you-go 
+• Integrated* 
+• Easy to Start
+
+EC2 Types:
+1) General Purpose
+2) Compute Optimized
+3) Memory Optimized
+4) Acclerated Computing
+5) Storage Optimized
+
+EC2 Various pricing models 
+• On-Demand --> pay by the hour, no long term commitment or upfornt payment
+            --> SHort term and unpredictable loads
+• Spot Instances --> Urgent!!, low computing apps
+• Reserved Instances --> Assigned to specific availability zone and provide capacity reservation, for steaddy applications and predictable usage
+                     --> Recmm for 1-3 years of ec2 usage
+• Dedicated Hosts --> Physical ec2 server for your use
+                  --> You can bring your server into AWS umbrella
+• Dedicated Instances --> amazon EC2 that run in a VPC on hardware that's dedicated to a user
+                      --> Isolated at hardware level
+
+Amazon EC2 Features
+• Secure login using key pairs
+• Temporary & Permanent Storage Volumes 
+• Security Groups (firewalls)
+• Static IPv4 address (Elastic IP address)
+• Metadata, known as tags
+• Subnets (virtual networks)
 
 
 
@@ -55,6 +88,8 @@ Elastic Computing • Complete Control • Flexibility • Reliable • Secure �
 
 Doubts:
 Hypervisor??
+You can bring your server into AWS umbrella??
+Elastic IP for multiple ec2 Instances?
 
 
 
