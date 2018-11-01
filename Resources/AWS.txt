@@ -2,7 +2,8 @@
 IAM : Identity and Access Management
 
 A security descipline, enables yout to securely control access
-to AWS services and resources of your  users.(right individuhtal,right resource,right time, right reason)
+to AWS services and resources of your  users.(right individuhtal,right resource,right time,
+                                              right reason)
 
 ---- > user, groups, use permisssion
 
@@ -19,10 +20,10 @@ benefits
 2) Granular control: ex--> ec2 read s3
 3) Temp credentials:  for
 4) flexible security credentials Management: mfa
-5) leverage external identitiy systems: gicing aws console access to someone, ex: 
+5) leverage external identitiy systems: giving aws console access to someone, ex: 
 6) seamlessly integrated into aws services:
 
-Iam Best practices:
+I am Best practices:
 
 1) keep access keys safe
 2) use policies defined by aws if possible
@@ -32,8 +33,34 @@ Iam Best practices:
 6) use roles for applications
 rotate credentials
 
+----------Virtualization and EC2------------
 
+virtualization: computer hardware,storage devices,
+
+Benefit: upfront cost, Reduce cost , effeciency increases, Agility, 
+        reduce down time,
+
+woroking: allows one virtual system and multple OS
+
+Hypervisor: A thin layer of software called a hypervisordecouples the virtual machines from the host and dynamically 
+            allocates computing resources to each virtual machine as needed.
+
+EC2 advantages:
+
+Elastic Computing • Complete Control • Flexibility • Reliable • Secure • Pay-as-you-go • Integrated* • Easy to Start
+
+
+
+---------------------DOubts------------
+
+Doubts:
+Hypervisor??
+
+
+
+-------------------Notes------------
 
 
 Notes:
 1) policies are added to user,roles and groups. 
+2) 
