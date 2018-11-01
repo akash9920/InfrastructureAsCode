@@ -1,0 +1,39 @@
+
+IAM : Identity and Access Management
+
+A security descipline, enables yout to securely control access
+to AWS services and resources of your  users.(right individuhtal,right resource,right time, right reason)
+
+---- > user, groups, use permisssion
+
+Feautures: 
+1) shared access to your AWS account, grant permission to other people w/o sharing your credentials
+
+2) Granular permission: diff ppl , diff role, diff permission
+
+3) Secure access to AWS resourcs to applications run on Ec2
+
+benefits
+
+1) Enhanced security: create user,credentialsgiven, SG association, SG policies
+2) Granular control: ex--> ec2 read s3
+3) Temp credentials:  for
+4) flexible security credentials Management: mfa
+5) leverage external identitiy systems: gicing aws console access to someone, ex: 
+6) seamlessly integrated into aws services:
+
+Iam Best practices:
+
+1) keep access keys safe
+2) use policies defined by aws if possible
+3)user---> grp---> permissions
+4) gd pw policy
+5) mfa enables
+6) use roles for applications
+rotate credentials
+
+
+
+
+Notes:
+1) policies are added to user,roles and groups. 

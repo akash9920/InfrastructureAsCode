@@ -64,6 +64,45 @@ Destination => IP address/CIDR range
 Target => Where you want to send the traffic for the specified destination 
 (e.g. if destination is my local subnet, mention target as "local")
 
+Cloud Computing:
+“... a style of computing in which scalable and elastic IT-enabled capabilities are
+ delivered as a service to external customers using Internet technologies.”
+
+" a standardized IT capability (services, software, or infrastructure) delivered via
+  Internet technologies in a pay-per-use, self-service way.”
+
+Cloud Characteristics
+1) On Demand Self Service: freedom of self provsion, can access coud based IT resources,
+                          Once configured, then automate, self configured
+
+2) Broad Netowrk Access: wide, ubiqutous access using devices,transport protocols,interfaces,security nd technologies;
+
+3) Resource(multiTenancy): multitenancy--->  char of a software program that enables instance of a program to serve multiple consumer(tenants),
+                           each is isolated from the other
+                           ----> cloud providers pools IT resources to serve multiple consumers by using multi tenancy 
+                           models(models rely on virtualization) 
+4) Elasticity: automatic scaling
+
+
+CLOUD DELIVERY MODELS
+
+1) IaaS: INfrastructure as service,
+
+---------to Study for Sure---------
+
+linux comamnds
+
+read write access , all the rigths
+
+NoSQL, CAP theorem
+
+TCP vs UDP
+
+EC2
+database
+S3 
+netwr
+
 
  ------------- doubts-----------
 
@@ -71,3 +110,4 @@ Target => Where you want to send the traffic for the specified destination
  predominantly a manual process. Environments become nonstandard, and reproducing an environment when issue arises is difficult.
 
 2) destination vs target'
+
