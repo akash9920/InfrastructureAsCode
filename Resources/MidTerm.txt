@@ -71,7 +71,9 @@ Cloud Computing:
 " a standardized IT capability (services, software, or infrastructure) delivered via
   Internet technologies in a pay-per-use, self-service way.”
 
-Cloud Characteristics
+
+----------Cloud Characteristics------------
+
 1) On Demand Self Service: freedom of self provsion, can access coud based IT resources,
                           Once configured, then automate, self configured
 
@@ -81,12 +83,53 @@ Cloud Characteristics
                            each is isolated from the other
                            ----> cloud providers pools IT resources to serve multiple consumers by using multi tenancy 
                            models(models rely on virtualization) 
-4) Elasticity: automatic scaling
+4) Elasticity: ability of automatic scaling  in realtime or based on pre determined factors
+5) Measured Usage: ability to keep track of your IT resources.
 
 
-CLOUD DELIVERY MODELS
+-----------CLOUD DELIVERY MODELS---------
 
-1) IaaS: INfrastructure as service,
+1) IaaS: INfrastructure as service---> provide IT environment, like hardware,metwork,OS resources
+                                  ----> consumer demand based(gives freedom to choose)
+                                  ex: AWS, Azure,GCP
+                                
+2) Paas: Platform as a service---> noneed to create resource, a platform will be provided to work.
+                              ----> consumer has less or no control over resources
+                              ex: heroku, google app engine,
+3) Saas: Software as a service: software program positioned as a shared cloud service.
+                                ex: github, gmail
+
+--------------Cloud deployment Models----------
+
+1) public: insfrastructure provsioned for open use by public
+2) private:: privately for a single organization , full control
+3) community: similar to public, restricted to a community of cloud consumers
+4) hybrid: comprise of 2 or more deploymenys models
+
+----------STORAGE-----------
+
+1) EBS(elastic blocK STORAGE): just like your file sys on your pc(fat32.,ntfs etc)
+                              OS  is the intermediate between application and underlying file systems
+
+                        Accessing BLS: req(rd,write) made to OS-----> OS fwd req to file sys-----> the path of the file is 
+                                      translated to block 
+                            why we need block: DB should have access for rd,wr for persistence access
+                
+                Block storage on AWS: 1) NAS(network attached storage), EBS is the service
+                                      2) Instance storage
+when EBS: 1) application needed persistence block storage,(LIke DB,data warehouse )
+          2)  low latency interactive applications , that demad high IOPS,throughput
+
+Lifetime of EBS:1) you can use EBS like your HDD, use it when u need it.
+                2) they aren't a part of EC2 instance, terminate Ec2 or not . EBS will be there for you
+availability: 1) designed for 99.999 percent
+              2) EBS creates a replica of its to deal with failure
+
+
+
+ 
+
+
 
 ---------to Study for Sure---------
 
