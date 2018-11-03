@@ -27,7 +27,11 @@ Infrastructure as code: A fundamental principle of DevOps is to treat infrastruc
 The default VPC on both AWS and GCP will include an internet gateway.
 An internet gateway enables your instances to connect to the internet.
 
-A VPC allows you to create or configure following: • firewall • routing table • public or private subnets • network gateway
+A VPC allows you to create or configure following: 
+• firewall 
+• routing table 
+• public or private subnets 
+• network gateway
 
 
 Network interface
@@ -93,7 +97,7 @@ Cloud Computing:
                                   ----> consumer demand based(gives freedom to choose)
                                   ex: AWS, Azure,GCP
                                 
-2) Paas: Platform as a service---> noneed to create resource, a platform will be provided to work.
+2) Paas: Platform as a service---> no need to create resource, a platform will be provided to work.
                               ----> consumer has less or no control over resources
                               ex: heroku, google app engine,
 3) Saas: Software as a service: software program positioned as a shared cloud service.

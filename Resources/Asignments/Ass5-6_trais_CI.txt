@@ -1,0 +1,120 @@
+CICD Stack:
+
+1) policies------->>>  EC2,Code Deploy,S3
+2) Roles---------->> EC2 and Code Deploy
+
+S3 name: code-deploy.YOUR-DOMAIN.tld. where build artifacts from trqavis ci will be deployed
+
+artifatcs: 
+
+code deploy application:
+
+
+
+Application Stack:
+// intially they were in network stack
+1)SG for web servers
+2)SG for DB servers
+
+create EC2, It should be launched with user data
+
+what is user data and metadata?
+--->If you stop an instance, modify its user data, and start the instance, the updated user data is not executed 
+when you start the instance.
+--->You can modify user data for an instance in the stopped state if the root volume is an EBS volume.
+---> To retrieve dynamic data from within a running instance, use the following URI: 
+    http://169.254.169.254/latest/dynamic/
+
+what are the things to be installed at run time
+
+---->EC2 instance should be tagged appropriately so that CodeDeploy can identify EC2 
+     instances on which application is suppose to be deployed.
+-----> profile/env setup to start the web server
+
+----> use already created bucket to store the data
+
+
+
+
+CodeDeploy appSpec
+
+AppSpec Files on an AWS Lambda Compute Platform
+If your application uses the AWS Lambda compute platform, the AppSpec file is used by AWS
+CodeDeploy to determine:
+1) Which Lambda function version to deploy.
+
+2) Which Lambda functions to use as validation tests.
+
+3) An AppSpec file can be YAML-formatted or JSON-formatted. You can also enter the contents
+ of an AppSpec file directly into AWS CodeDeploy console when you create a deployment.
+
+
+
+
+--------Doubts--------
+what is user data?
+where should the yaml should be kept.......!!! 
+
+How and when to use the return , at Fn:GetAtt.
+
+unable to understand the GetAtt properly? what are we 
+
+application gets security credentials from the ec2 instance, and we need to set a 
+time that it should refreshed the credentials after that? need some clarity on this
+
+
+------>AWS CodeDeployAGent
+
+AWS CodeDeploy is a deployment service that automates application deployments to Amazon 
+EC2 instances, on-premises instances, or serverless Lambda functions.
+
+
+##How the AWS CodeDeploy Agent Uses the AppSpec File##
+During deployment, the AWS CodeDeploy agent looks up the name of the current event in the 
+hooks section of the AppSpec file. If the event is not found, the AWS CodeDeploy agent moves
+on to the next step. If the event is found, the AWS CodeDeploy agent retrieves the list of scripts 
+to execute. The scripts are run sequentially, in the order in which they appear in the file. The status of each script is logged in the AWS CodeDeploy agent log file on the instance.
+
+If a script runs successfully, it returns an exit code of 0 (zero).
+
+Note
+
+The AWS CodeDeploy agent is not used in an AWS Lambda deployment.
+
+During the Install event, the AWS CodeDeploy agent uses the mappings defined in the files section of the AppSpec file to determine which folders or files to copy from the revision to the instance.
+
+If the AWS CodeDeploy agent installed on the operating system doesn't match what's listed in the AppSpec file, the deployment fails.
+
+-----------------------------Notes---------------------------------
+
+1) Note that you are not billed for HTTP requests used to retrieve instance metadata and user data.
+2) Instance metadata is data about your instance that you can use to configure or manage the running instance.
+
+experiment with this thing
+3) If you stop an instance, modify its user data, and start the instance, the updated user data is not executed 
+when you start the instance.
+4) Fn::GetAtt
+Fn::GetAtt returns a value for a specified attribute of this type.
+
+Arn :: Returns the Amazon Resource Name (ARN) of the specified bucket.
+Example: arn:aws:s3:::mybucket 
+Ref:
+The intrinsic function Ref returns the value of the specified parameter or resource.
+
+5) Note that only one role can be assigned to an EC2 instance at a time, and all applications
+ on the instance share the same role and permissions.
+
+6) Although a role is usually assigned to an EC2 instance when you launch it, a role can also be
+ attached to an EC2 instance that is already running.
+
+7) When the application runs, it obtains temporary security credentials from Amazon EC2 instance metadata
+You can use the PassRole permission to restrict which role a user can pass to an EC2 instance when the user launches the instance
+
+8)An AppSpec file must be a YAML-formatted file named appspec.yml and it must be placed in the root of the directory structure of an
+ application's source code. Otherwise, deployments fail.
+
+9) After you have a bundled archive file (known in AWS CodeDeploy as a revision), you upload it to an Amazon S3 bucket or Git repository.
+  Then you use AWS CodeDeploy to deploy the revision.
+
+10) The AWS CodeDeploy agent is not used in an AWS Lambda deployment.
+
