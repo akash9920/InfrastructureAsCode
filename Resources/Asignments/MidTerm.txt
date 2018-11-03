@@ -108,7 +108,7 @@ Cloud Computing:
 
 ----------STORAGE-----------
 
-1) EBS(elastic blocK STORAGE): just like your file sys on your pc(fat32.,ntfs etc)
+1)Block Storage ( blocK STORAGE): just like your file sys on your pc(fat32.,ntfs etc)
                               OS  is the intermediate between application and underlying file systems
 
                         Accessing BLS: req(rd,write) made to OS-----> OS fwd req to file sys-----> the path of the file is 
@@ -117,17 +117,39 @@ Cloud Computing:
                 
                 Block storage on AWS: 1) NAS(network attached storage), EBS is the service
                                       2) Instance storage
+
+EBS: You can use block-level storage only in combination with an VM (EC2) instance where the OS runs
 when EBS: 1) application needed persistence block storage,(LIke DB,data warehouse )
           2)  low latency interactive applications , that demad high IOPS,throughput
 
 Lifetime of EBS:1) you can use EBS like your HDD, use it when u need it.
                 2) they aren't a part of EC2 instance, terminate Ec2 or not . EBS will be there for you
 availability: 1) designed for 99.999 percent
-              2) EBS creates a replica of its to deal with failure
+              2) EBS creates a replica of its, to deal with failure
 
+Snapshots:
+--->Amazon EBS provides the ability to save point-in-time snapshots of your volumes to Amazon S3
+--->only the changes in your EBS are stores while creating the next snapshot,all the snapshots are complete within itself
 
+Amazon EBS encryption provides seamless support for data-at-rest and data-in-transit between EC2 instances and EBS volumes.
 
- 
+EC2 Instance Store: provide temp block level storage,storage is located on disks that are physically attached to the host computer
+             Uses:for temp data, cache,buffers,applications that replicates there data to several servers
+
+ An instance store consists of one or more instance store volumes exposed as block devices
+
+lifetme:  persists only during the lifetime of its associated instance
+         if instance reboots, data reamins. It will lost if there is a disk failure,instance stop,instance terminates
+        NO encryption
+
+EFS(elastic file system): file storage sys for EC2, mounted to EC2, can provide common access to multiple EC2 instance
+                        when: mult-threaded application, concurrent data access
+                    Feature: 1)  Automatic (highly)scaling in real time as per need for your applications
+                             2) cannto be a root volume, data in EFS replicated accross multiple avail zones
+                        used cases: big data analytics,media processing,web services
+
+BLock storage: EBS, instance store,EFS
+
 
 
 
@@ -153,4 +175,6 @@ netwr
  predominantly a manual process. Environments become nonstandard, and reproducing an environment when issue arises is difficult.
 
 2) destination vs target'
+
+host computers, store
 
