@@ -80,7 +80,7 @@
                                     }
                                   },
                 
-                "privateSubnetAK" : {
+                "privateSubnetAK1" : {
                     "Type" : "AWS::EC2::Subnet",
                     "Properties" : {
                         "VpcId" : { "Ref" : "vpcAK" },
@@ -89,19 +89,35 @@
                         "Tags" : [{"Key" : "Name", "Value" : {"Fn::Join" : ["",[{"Ref" : "stackname"},"-akash9920-private-subnet"]] }}]
                                     }
                                    },
-                "priSubnetRouteTableAssociationAK" : {
+                "privateSubnetAK2" : {
+                    "Type" : "AWS::EC2::Subnet",
+                    "Properties" : {
+                        "VpcId" : { "Ref" : "vpcAK" },
+                        "CidrBlock" : "10.0.3.0/24",
+                        "AvailabilityZone" : "us-east-1b",
+                        "Tags" : [{"Key" : "Name", "Value" : {"Fn::Join" : ["",[{"Ref" : "stackname"},"-akash9920-private-subnet"]] }}]
+                                }
+                                },
+                "priSubnetRouteTableAssociationAK1" : {
                     "Type" : "AWS::EC2::SubnetRouteTableAssociation",
                     "Properties" : {
-                        "SubnetId" : { "Ref" : "privateSubnetAK" },
+                        "SubnetId" : { "Ref" : "privateSubnetAK1" },
                         "RouteTableId" : { "Ref" : "routeTablePrivateAK" }
                                     }
                                  },
+                "priSubnetRouteTableAssociationAK2" : {
+                    "Type" : "AWS::EC2::SubnetRouteTableAssociation",
+                        "Properties" : {
+                        "SubnetId" : { "Ref" : "privateSubnetAK2" },
+                        "RouteTableId" : { "Ref" : "routeTablePrivateAK" }
+                                       }
+                                                    },
                 "DBSubnetGroup" : {
                     "Type" : "AWS::RDS::DBSubnetGroup",
                     "Properties" : {
                         "DBSubnetGroupDescription" : "DB Subnet Group",
                         "DBSubnetGroupName" : {"Fn::Join" : ["",[{"Ref" : "stackname"},"-akash9920-db-subnetgroup"]] },
-                        "SubnetIds" : [ {"Ref" : "privateSubnetAK"}]
+                        "SubnetIds" : [ {"Ref" : "privateSubnetAK1"}, {"Ref" : "privateSubnetAK2"}]
                                    
                                     }
                                    },
