@@ -8,7 +8,7 @@
 
             "stackname" : {
                     "Description" : "Name of the Stack",
-                    "Type" :"String ",
+                    "Type" :"String",
                     "Default" : "stack01"
                            }
                     },
