@@ -1,0 +1,169 @@
+{
+
+    "Description" : "Networking Stack",
+    "AWSTemplateFormatVersion" : "2010-09-09",
+
+
+    "Parameters" : {
+
+            "stackname" : {
+                    "Description" : "Name of the Stack",
+                    "Type" :"String ",
+                    "Default" : "stack01"
+                           }
+                    },
+            "Resources" : {
+
+                "vpcAK" : {
+
+                    "Type" : "AWS::EC2::VPC",
+                    "Properties" : {
+                            "CidrBlock"           : "10.0.0.0/16",
+                            "EnableDnsSupport"    : true,
+                            "EnableDnsHostnames"  : true,
+                            "InstanceTenancy"     : "default",
+                            "Tags" : [{"Key" : "Name", "Value" :{"Fn::Join" : ["",[{"Ref" : "stackname"},"-akash9920-vpc"]]} }]
+                                   }
+                            },
+                "internetgatewayAK" : {
+                    "Type" : "AWS::EC2::InternetGateway",
+                    "Properties" : {
+                            "Tags" : [{"Key" : "Name", "Value" : {"Fn::Join" : ["",[{"Ref" : "stackname"},"-akash9920-InternetGateway"]] }}]
+                                   }
+                                       },
+                "vpcattachmentAK" : {
+                    "Type" : "AWS::EC2::VPCGatewayAttachment",
+                    "Properties" : {
+                        "InternetGatewayId" : {"Ref" : "internetgatewayAK"},
+                        "VpcId" : {"Ref" : "vpcAK"}
+                                    }
+                                },
+                "routeTablePublicAK" : {
+                    "Type" : "AWS::EC2::RouteTable",
+                    "Properties" : {
+                        "VpcId" : {"Ref" : "vpcAK"},
+                        "Tags" : [ {"Key" : "Name", "Value" : {"Fn::Join" : ["",[{"Ref" : "stackname"},"-akash9920-public-route-table"]] }}]
+                                    }
+                                  },
+                "routePublicAK" : {
+                    "Type" : "AWS::EC2::Route",
+                    "Properties" : {
+                        "DestinationCidrBlock"  : "0.0.0.0/0",
+                        "GatewayId" : {"Ref"    : "internetgatewayAK"},
+                        "RouteTableId" : {"Ref" : "routeTablePublicAK"}
+                          
+                                    }
+                                  },
+                "publicSubnetAK" : {
+                    "Type" : "AWS::EC2::Subnet",
+                    "Properties" : {
+                        "VpcId"               : { "Ref" : "vpcAK" },
+                        "CidrBlock"           : "10.0.1.0/24",
+                        "AvailabilityZone"    : "us-east-1a",
+                        "MapPublicIpOnLaunch" : true,
+                        "Tags" : [{"Key" : "Name", "Value" : {"Fn::Join" : ["",[{"Ref" : "stackname"},"-csye6225-ec2-public-subnet"]] }}]
+                                    }
+                                   },
+                
+                "publicSubnetRouteTableAssociationAK" : {
+                    "Type" : "AWS::EC2::SubnetRouteTableAssociation",
+                    "Properties" : {
+                            "SubnetId" : { "Ref" : "publicSubnetAK" },
+                            "RouteTableId" : { "Ref" : "routeTablePublicAK" }
+                                    }
+                                 },
+                "routeTablePrivateAK" : {
+                    "Type" : "AWS::EC2::RouteTable",
+                    "Properties" : {
+                            "VpcId" : {"Ref" : "vpcAK"},
+                            "Tags" : [ {"Key" : "Name", "Value" : {"Fn::Join" : ["",[{"Ref" : "stackname"},"-akash9920-private-route-table"]] }}]
+                                    }
+                                  },
+                
+                "privateSubnetAK" : {
+                    "Type" : "AWS::EC2::Subnet",
+                    "Properties" : {
+                        "VpcId" : { "Ref" : "vpcAK" },
+                        "CidrBlock" : "10.0.2.0/24",
+                        "AvailabilityZone" : "us-east-1a",
+                        "Tags" : [{"Key" : "Name", "Value" : {"Fn::Join" : ["",[{"Ref" : "stackname"},"-akash9920-private-subnet"]] }}]
+                                    }
+                                   },
+                "priSubnetRouteTableAssociationAK" : {
+                    "Type" : "AWS::EC2::SubnetRouteTableAssociation",
+                    "Properties" : {
+                        "SubnetId" : { "Ref" : "privateSubnetAK" },
+                        "RouteTableId" : { "Ref" : "routeTablePrivateAK" }
+                                    }
+                                 },
+                "DBSubnetGroup" : {
+                    "Type" : "AWS::RDS::DBSubnetGroup",
+                    "Properties" : {
+                        "DBSubnetGroupDescription" : "DB Subnet Group",
+                        "DBSubnetGroupName" : {"Fn::Join" : ["",[{"Ref" : "stackname"},"-akash9920-db-subnetgroup"]] },
+                        "SubnetIds" : [ {"Ref" : "privateSubnetAK"}]
+                                   
+                                    }
+                                   },
+                
+                "WebServerSecurityGroup": {
+                    "Type": "AWS::EC2::SecurityGroup",
+                    "Properties": {
+                        "GroupName" : {"Fn::Join" : ["",[{"Ref" : "stackname"},"-akash9920-webapp-secuitygroup"]] },
+                        "GroupDescription": "Enable HTTP access via port 80, SSH access via port 22, HTTPS access via port 443, NodeJS access via port 3000",
+                        "VpcId": { "Ref" : "vpcAK" },
+                        "SecurityGroupIngress": [
+                            {
+                                "IpProtocol": "tcp",
+                                "FromPort": "80",
+                                "ToPort": "80",
+                                "CidrIp": "0.0.0.0/0"
+                            },
+                            {
+                                "IpProtocol": "tcp",
+                                "FromPort": "22",
+                                "ToPort": "22",
+                                "CidrIp": "0.0.0.0/0"
+                            },
+                            {
+                                "IpProtocol": "tcp",
+                                "FromPort": "443",
+                                "ToPort": "443",
+                                "CidrIp": "0.0.0.0/0"
+                            },
+                            {
+                                "IpProtocol": "tcp",
+                                "FromPort": "3000",
+                                "ToPort": "3000",
+                                "CidrIp": "0.0.0.0/0"
+                            }
+                                                ]
+                                            }
+                             },
+
+                "DBEC2SecurityGroup": {
+                    "Type" : "AWS::EC2::SecurityGroup",
+                    "Properties" : {
+                        "GroupName" : {"Fn::Join" : ["",[{"Ref" : "stackname"},"-akash9920-db-secuitygroup"]] },
+                        "GroupDescription" : "allows ingress traffic only from Web App",
+                        "SecurityGroupIngress" : [
+                         {
+                            "Description" : "ingress rule on 3306",
+                            "FromPort" : "3306",
+                            "IpProtocol" : "tcp",
+                            "SourceSecurityGroupId" : { "Ref" : "WebServerSecurityGroup"},
+                            "ToPort" : "3306"
+                        }
+                                      ],
+                                   "VpcId" : { "Ref" : "vpcAK" }
+                                  }
+                                        }
+                    }
+                
+                
+                
+
+                
+
+
+} 
