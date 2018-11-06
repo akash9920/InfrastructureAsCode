@@ -1,0 +1,9 @@
+<h1> hello world from courselist</h1>
+
+<ul>
+  <li *ngFor="let i of courses">
+      {{i.title}},{{i.id}}
+      <button (click)="deletecourse(i)"> delete</button>
+  </li>
+</ul>
+
