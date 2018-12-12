@@ -1,0 +1,77 @@
+Testing types
+
+
+1) Manual Testing
+2) functional Testing
+3) Integration Testing
+4) Unit Testing
+
+points:
+• Unit tests should not require access to any external systems such as network, databases, etc. 
+• All external systems such as database, file server, etc. are mocked out using specific test APIs and test data.
+
+
+ Integration tests verify that interaction between multiple components (applications, services, modules, etc.) is working as expected.
+
+Continous Integration
+
+what is static and dynamic tests
+
+static test: can be done without using code --->> compile time testing or something like that????
+
+dynamic test: when the code is in operation mode, and done in run time environment.
+
+Infrastructure as code: A fundamental principle of DevOps is to treat infrastructure
+ the same way developers treat code.
+
+The default VPC on both AWS and GCP will include an internet gateway.
+An internet gateway enables your instances to connect to the internet.
+
+A VPC allows you to create or configure following: • firewall • routing table • public or private subnets • network gateway
+
+
+Network interface
+You can create a network interface, attach it to an instance, detach it from an instance, 
+and attach it to another instance. The attributes of a network interface follow it as it's
+attached or detached from an instance and reattached to another instance.
+
+When you move a network interface from one instance to another, network traffic is redirected to the new 
+instance. 
+You can also modify the attributes of your network interface, including changing its security groups and managing its IP addresses.
+
+Every instance in a VPC has a default network interface, called the primary network interface (eth0). You cannot detach a primary network 
+interface from an instance. You can create and attach additional network interfaces. The maximum number of network interfaces that you can
+ use varies by instance type. For more information, see IP Addresses Per Network Interface Per Instance Type. 
+
+ref: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html
+
+Route table
+
+ref: https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html
+
+
+Internet Gateways
+An internet gateway is a horizontally scaled, redundant, and highly available VPC component that allows communication between instances 
+in your VPC and the internet. It therefore imposes no availability risks or bandwidth constraints on your network traffic. 
+An internet gateway serves two purposes: to provide a target in your VPC route tables for internet-routable traffic, and to
+perform network address translation (NAT) for instances that have been assigned public IPv4 addresses. 
+
+ref: https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html
+
+horizontal scale: adding new resources
+vertical scale: adding more computation power
+
+Destination => IP address/CIDR range
+Target => Where you want to send the traffic for the specified destination 
+(e.g. if destination is my local subnet, mention target as "local")
+
+ A security group acts as a virtual firewall for your instance to control inbound 
+ and outbound traffic
+
+ ------------- doubts-----------
+
+ 1)  Historically, server configuration and application deployment has been a 
+ predominantly a manual process. Environments become nonstandard, and reproducing an environment when issue arises is difficult.
+
+2) destination vs target'
+3) Elastic IP address??
