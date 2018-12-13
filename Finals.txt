@@ -210,8 +210,191 @@ How does a CDN improve website load times?
 }
 
 {
-    
+
 }
+
+
+-------- >> <<---------- >> << -------- >> << ---------
+CLOUD and Application security
+
+1) Confidentiality: only authorised party can get access.
+
+2) INtegerity: guarantees that the data send matches that the data receieved
+
+3) authenticity: data coming from an authorised source
+
+4) Availability : Service should be accessible and usable during a specified time period.
+
+5) Threat: In computer security a threat is a possible danger that might exploit a vulnerability to breach security and therefore cause possible harm.
+
+6) vulnerability:  vulnerability is a weakness that can be exploited
+
+
+Attack Vectors:
+
+a) An attack vector is a path or means by which a hacker can gain access to a computer or network server in order to deliver a payload or malicious outcome.
+
+b) Attack vectors enable hackers to exploit system vulnerabilities, including the human element.
+
+
+Risk: Risk is the possibility of loss or harm arising from performing an activity
+
+Security ControlsSecurity:  controls are countermeasures used to prevent or respond to security threats and to reduce or avoid risk
+
+Threat Agent :A threat agent is an entity that poses a threat because it is capable of carrying out an attack
+
+
+CLOUD SECURITY THREATS:
+
+1) Traffic eaves dropping : when data is being transferred to or within a cloud service is passively itercepted
+                            compromise the confidentiality of the data, bcz of the passive nature attack go undeteceted?
+
+2) Malicious Intermediary : when msgs are intercepted andlatered by a malicious service agent, compromising the messege confidentiality
+                            may also insert harmful data
+
+3) Insufficient Authorization: when access is granted to an attacker erroneously, resulting in the exposure to
+                            IT resources that are normally protected.
+
+4) Denial of Service: purpose of this attack is to overlaod the resources to the point where they cannot function properly. Can be launched in 
+                    the following way
+
+5) Flawed Implementation: substandard design, Implementation or configuration of service and its deployment can have undesirable consequences.
+                          inherent flaws can have vulnerabilities, and have potential risks
+
+
+Cloud Security Mechanism
+
+ENcryption: converting plaint text data into a protected and unreadable format so that it can be transferred over a network
+            encryption can help cpunter the traffic eavesdropping, malicious Intermediary,insuffeceiant Authorization
+            these are of two types:
+
+            a) Symmetric b) Asymmetric
+
+Symmetric Encryption: symmetric encryption uses the same key for both encryption and decryption
+                       both performed by auth parties having one shared key.
+
+                        It is also known as secret key cryptography, same key for encryp and decryption
+
+                        parties who crypt and decrypt show evidence of performance
+                        of the act
+
+                        basic auth is performed as to check party with can only create messeges
+
+Assymetric Encryption : relies on use of 2 diff keys, namesly private and public
+                        it is also refered to as public key cryptography,
+                       a) Private key: only owner has it,
+                       b) Public key : commonly available
+
+                       a document that was encrpted with aprivate key can only be correctly
+                       decrypted with the corresponding public key?
+
+                       conversly , document that was encrypted with the public key can be decrypted only by its private counter parties
+
+                       thats why 2 diff keys, it is always computaionally slower then the symmetric encryption
+
+
+Securing Web Based Data transission:
+
+secure web based data transmission is applied via https
+https--- > uses SSL/TLS (transport layer securoty) a successor of ssl.
+
+            assym more time, TLS uses asym for key exchange then TLS change to key exchange method
+
+            TLS supprt RSA-- as chief assymetric encryption cipher
+
+            Triple DES and AED are supported for symmetric encryption
+
+SSL handshake:
+
+Hashing: The hashing mechanism is used when a one-way, non-reversible form of data protection is required
+
+        Hashing can be used to derive a message digest from a message, which is often of a fixed length and smaller than the original message.
+
+        The message sender can then utilize the hashing mechanism to attach the message digest to the message. •The recipient applies the same
+         hash function to the message to verify that the produced message digest is identical to the one that accompanied the message.
+         •Any alteration to the original data results in an entirely different message digest and clearly indicates that tampering has occurred
+
+Digital signature:
+A message is assigned a digital signature prior to transmission, which is then rendered invalid if the message experiences any subsequent, unauthorized modifications.
+Both hashing and asymmetrical encryption are involved in the creation of a digital signature, which essentially exists as a message digest that was encrypted by a private key and appended to the original message.
+The recipient verifies the signature validity and uses the corresponding public key to decrypt the digital signature, which produces the message digest. •The hashing mechanism can also be applied to the original message to produce this message digest. Identical results from the two different processes indicate that the message maintained its integrity.
+
+
+Hardening is the process of stripping unnecessary software from a system to limit potential vulnerabilities that can be exploited by attackers.
+
+
+Handling the hackers:
+MApping the application
+
+bypassing client side controls
+
+
+
+cross-site scripting
+
+XSS enables attackers to inject client-side scripts into web pages viewed by other users. 
+•A cross-site scripting vulnerability may be used by attackers to bypass access controls such as the same-origin policy
+
+
+Cross-site request forgery:
+
+not a theft of datat changing state of request
+
+
+COntainers:
+
+Ease of Deployment 
+
+isolation
+efefceinvy
+better packing
+
+containers are nothing but a process on linux
+
+isolation and resource confinement is what makes a Linux process a Linux container
+
+cgroups limits how much you can use
+•Namespaces limits what you can see (and therefore use)
+
+Multiple namespaces: pid, net, mnt, uts, ipc, user
+
+The docker container engine manages the configuration of Linux kernel namespaces, additional security features, and cgroups
+
+
+Docker is a simple client/server model
+
+Docker called registry which stores Docker images and metadata about those images.
+
+Docker Client –The docker command used to control most of the Docker workflow and to talk to remote Docker servers.
+
+Docker Server –The docker command run in the daemon mode
+
+Docker image-- > Rootfs and JSON
+
+the layering : create a new JSON file, and tar the difference between the original image and the new image with the updated JSON file. This creates a layered imag
+
+The definition of a container image was eventually standardized by the Open Container Initiative (OCI) 
+
+limitation of containers: they use kernel of host linux machine, if they require a specific version of kernel then
+                           there  might be a chance that the it wont run on any linux host, where as VMs do not have this restriction
+
+Container Registry
+•Docker took these container images (tarballs) and moved them to a web service from which they could be pulled, developed a protocol to pull them, 
+and called the web service a container registry.
+
+Container engines
+Container engines are programs that can pull container images from container registries and reassemble them onto container storage.•Container engines also launch container runtimes.
+
+Container Storage
+•Container storage is usually a copy-on-write (COW) layered filesystem. When you pull down a container image from a container registry, you first need to untarthe rootfsand place it on disk.
+•If you have multiple layers that make up your image, each layer is downloaded and stored on a different layer on the COW filesystem.
+•The COW filesystem allows each layer to be stored separately, which maximizes sharing for layered images
+
+Container Runtime Configuration
+•After the container engine downloads the container image to container storage, it needs to create a container runtime configuration.
+•The runtime configuration combines input from the caller/user along with the content of the container image specification.
+•For example, the caller might want to specify modifications to a running container's security, add additional environment variables, or mount volumes to the container.•The layout of the container runtime configuration and the exploded rootfshave also been standardized by the OCI standards body as the OCI Runtime Specification
+
 
 
 
@@ -263,4 +446,21 @@ need to know what exactly what cdn is
 cdns are nothing but caching servers?
 
 origin vs caching vs edge sercer?
+
+what are cookies?
+
+dsicuss some netwrking basic terms as well for tomorrow
+
+how  traffic eavesdropping is a passive attack?
+
+it says passively intercepted data for illegal information gathering,
+
+Then it can also get the information from the messfe as well making it similar to malicious Intermediary
+
+
+Symmetric vs assymetric keys, in asymetric key working needed to be discussed to understand that
+
+access control??
+
+
 
