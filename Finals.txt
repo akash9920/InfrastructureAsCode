@@ -1,0 +1,266 @@
+AWS regions and Load Balancing
+
+Regions:
+Regions are Isolated from each other
+in regions there are multiple/ no of  availability zones
+
+availability zones:
+1) When you launch an instance, you can select an Availability 
+    Zone or let AWS choose one for you. If you distribute your instances
+    across multiple Availability Zones and one instance fails, you can design 
+    your application so that an instance in another Availability Zone can handle requests.
+
+2) You can also use Elastic IP addresses to mask the failure of an instance in one Availability 
+    Zone by rapidly remapping the address to an instance in another Availability Zone.
+
+3) An Availability Zone is represented by a region codefollowed by a letter identifier; for example, us-east-1a. To ensure that resources are distributed across the Availability Zones for a region, AWS independently map Availability Zones to identifiers for each account. For example, your Availability Zone us-east-1a might not be the same location as us-east-1a for another account. There's no way for you to coordinate Availability Zones between accounts.
+   
+
+LoadBalancer:
+
+1)  A load balancer is a device that acts as a reverse proxy and distributes network or application traffic across a number of servers
+2) Load balancers are used to increase capacity (concurrent users) and reliability of applications.
+3) Load balancers ensure reliability and availability by monitoring the "health" of applications and only sending requests to servers and applications that can respond in a timely manner
+4) They improve the overall performance of applications by decreasing the burden on servers associated with managing and maintaining application and network sessions, as well as by performing application-specific tasks.
+
+Types: 
+
+Layer 4 Load Balancers:
+Layer 4 load balancers act upon data found in network and transport layer protocols (IP, TCP, FTP, UDP). 
+
+Layer 7 Load Balancers-
+Layer 7 load balancers distribute requests based upon data found in application layer protocols such as HTTP.CSYE 6225, Fall 2018, Tejas Parikh, Northeastern University12
+
+requests distributon algorithms
+
+1) round orbin
+2) weighted round robin
+3) least connections
+4) least response time
+
+Layer 7 load balancers can further distribute requests based on application specific data such as HTTP headers, cookies, or data within the application message itself, such as the value of a specific parameter.CSYE 6225, Fall 2018, Tejas Parikh, Northeastern University13
+
+
+--->> Classic Load balancer:
+
+The Classic Load Balancer routes traffic based on application or network level information and is ideal for simple load balancing of traffic across multiple EC2 instances where high availability, automatic scaling, and robust security are required.CSYE 6225, Fall 2018, Tejas Parikh, Northeastern University15
+
+--->> features?
+
+High Availability 
+•Health Checks
+•SSL offloading   -------->?
+•Sticky Sessions
+•Layer 4 or 7 Load Balancing
+•Access Logs
+•Operational Monitoring
+
+
+---->>Application Load Balancer
+
+An Application Load Balancer is a load balancing option for the Elastic Load Balancing service that operates at the application layer and allows you to define routing rules based on content across multiple services or containers running on one or more Amazon Elastic Compute Cloud (Amazon EC2) instances.
+
+features:
+
+•Host-based routing
+•Path-based routing
+•HTTP/2 Support
+•WebSocketsSupport
+•Health Checks
+•Layer 7 Load Balancing
+•SSL Offloading
+•Request Tracking
+•Web Application Firewall
+•Containerized Application Support
+
+
+
+Load balancer features:
+
+1) Assymetric load
+2) DDOs tack protection 
+3) HTtP compression  ----------> ??
+
+---->> network lod balanacer
+
+1)  Network Load Balancer operates at the connection level (Layer 4), routing connections to targets -Amazon EC2 instances, containers and IP addresses based on IP protocol data.
+2)  Ideal for load balancing of TCP traffic, Network Load Balancer is capable of handling millions of requests per second while maintaining ultra-low latencies. 
+3)  Network Load Balancer is optimized to handle sudden and volatile traffic patterns while using a single static IP address per Availability Zone.
+4)  It is integrated with other popular AWS services such as Auto Scaling, Amazon EC2 Container Service (ECS), and Amazon CloudFormation
+
+
+features
+
+•Connection-based Load Balancing:
+You can load balance TCP traffic, routing connections to targets -Amazon EC2 instances, microservices and containers, and IP addresses.
+
+•Preserve source IP address:
+Network Load Balancer preserves the client side source IP allowing the back-end to see the IP address of the client.
+
+•Static IP support:
+
+Network Load Balancer automatically provides a static IP per Availability Zone (subnet) that can be used by applications as the front-end IP of the load balancer.
+•Long-lived TCP Connections:
+Network Load Balancer supports long-lived TCP connections that are ideal for WebSockettype of applications.
+
+•Central API Support:
+Network Load Balancer uses the same API as Application Load Balancer. This will enable you to work with target groups, health checks, and load balance across multiple ports on the same Amazon EC2 instance to support containerized applications
+
+
+
+AutoScaling:
+
+Autoscaling is a method used in cloud computing, whereby the amount of computational resources in a server farm, typically measured in terms of the number of active servers, scales automatically based on the load on the farm. •It is closely related to, and builds upon, the idea of load balancing
+
+Auto Scaling detects impaired compute instances and unhealthy applications, and replace the instances without human intervention ensuring that your application is getting the compute capacity it needs
+
+1. Monitor the health of running instances
+2. Replace impaired instances automatically
+3. Balance capacity across Availability Zones
+
+Dynamic scaling:
+
+
+
+Scaling policies:
+
+Manual scaling:     specify max and min values and ec2 autoscaling manages after things
+Scheduled scaling : when you know exactly when you will need to increase or decrease
+dynamic scaling   : scale by policy,when you want to scale in respond to changing conditions,
+
+how it is different from manual scaling?
+
+
+Scale out:
+
+scale out ---- > to create the ec2  instances
+
+scale in ----> to delete the ec2 instances
+
+The cooldown period is a configurable setting for your Auto Scaling group that helps to ensure that it doesn't launch or terminate additional instances before the previous scaling activity takes effect. •After the Auto Scaling group dynamically scales using a simple scaling policy, it waits for the cooldown period to complete before resuming scaling activities.•Cooldown periods are notsupported for scheduled scaling.CSYE 6225, Fall 2018, Tejas Parikh, Northeastern University36
+
+
+Content Delivery Network (CDN)
+
+1) A content delivery network or content distribution network (CDN) is a geographically distributed network of proxy servers and their data centers.
+2) A CDN allows for the quick transfer of assets needed for loading Internet content including HTML pages, JavaScript files, stylesheets, images, and videos
+3) The popularity of CDN services continues to grow, and today the majority of web traffic is served through CDNs, including traffic from major sites like Facebook, Netflix, and Amazon.
+
+Benefits:
+
+a) Improving website load times
+b) Reducing bandwidth costs
+c) Increasing content availability and redundancy
+d) Improving website security :  security by providing ddos mitigation
+
+
+origin Server:
+
+The purpose of an origin server is to process and respond to incoming Internet requests from Internet clients.
+
+origin vs caching vs edge server
+
+
+A CDN edge server:
+
+at logical extreme or edge of a N/W.
+an edge server often seves as the connection between seperate networks
+
+--- > A primary purpose of a CDN edge server is to store content as close as possible to a requesting client machine, 
+      thereby reducing latency and improving page load times?
+
+
+host computer----- > edge -------------> origin server
+             <<------      <<-----------
+
+What is anycast:
+
+: Anycast is a network addressing and routing method in which incoming requests can be routed to a variety of different locations or “nodes.”
+
+1) typically routes incoming traffic to the nearest data center with the capacity to process the request efficiently. 
+
+2) Selective routing allows an Anycast network to be resilient in the face of high traffic volume, network congestion, and DDoS attacks.
+
+working of CDN: 
+
+a) At its core, a CDN is a network of servers linked together with the goal of delivering content as quickly, cheaply, reliably, and securely as possible.
+
+b) In order to improve speed and connectivity, a CDN will place servers at the exchange points between different networks.
+
+c) These Internet exchange points (IXPs) are the primary locations where different Internet providers connect in order to provide each other access to traffic originating on their different networks. 
+
+e) By having a connection to these high speed and highly interconnected locations, a CDN provider is able to reduce costs and transit times in high speed data delivery.
+
+
+AWS cloud Front edge N/W:
+
+cache
+
+types of HTTP requests supported by cloud front
+
+GET•HEAD•POST•PUT•PATCH•DELETE •OPTIONS
+
+Note: Amazon CloudFront does not cache the responses to POST, PUT, DELETE, and PATCH requests –these requests are proxied back to the origin server
+
+
+How does a CDN improve website load times?
+
+{
+// to do nd write
+}
+
+{
+    
+}
+
+
+
+
+
+
+----------->> <<------------------->> <<--------------->> <<----------------->> <<-----------------------
+
+ Recite:
+   
+    regions vs availability zones:
+    failures
+    elastic IP
+    load balancer and layers
+
+    types of scaling policies and also scaling
+
+these are events
+
+which siz of group it is refering to 
+
+ ?? Anycast ??
+
+
+
+
+
+----------->> <<------------------->> <<--------------->> <<----------------->> <<-----------------------
+QUESTIONS
+
+----->>>elastic load balanacer vs classic load balancer?
+
+static ip per availability zone vs Elastic IP
+
+ need to read about DDos attacks
+
+diff between auto scaling and load balancing
+
+how it(dynamic) is different from manual scaling?
+
+Scale out---->> how they are related to cpu usage scaling
+
+what is the meaning increasing the size of the groups
+
+cooldowns are like a buffer period before it starts scaling>
+
+need to know what exactly what cdn is
+
+cdns are nothing but caching servers?
+
+origin vs caching vs edge sercer?
+
