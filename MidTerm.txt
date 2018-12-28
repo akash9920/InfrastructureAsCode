@@ -27,7 +27,11 @@ Infrastructure as code: A fundamental principle of DevOps is to treat infrastruc
 The default VPC on both AWS and GCP will include an internet gateway.
 An internet gateway enables your instances to connect to the internet.
 
-A VPC allows you to create or configure following: • firewall • routing table • public or private subnets • network gateway
+A VPC allows you to create or configure following: 
+• firewall
+ • routing table 
+ • public or private subnets 
+ • network gateway
 
 
 Network interface
@@ -37,7 +41,8 @@ attached or detached from an instance and reattached to another instance.
 
 When you move a network interface from one instance to another, network traffic is redirected to the new 
 instance. 
-You can also modify the attributes of your network interface, including changing its security groups and managing its IP addresses.
+You can also modify the attributes of your network interface,
+ including changing its security groups and managing its IP addresses.
 
 Every instance in a VPC has a default network interface, called the primary network interface (eth0). You cannot detach a primary network 
 interface from an instance. You can create and attach additional network interfaces. The maximum number of network interfaces that you can

@@ -13,7 +13,9 @@ availability zones:
 2) You can also use Elastic IP addresses to mask the failure of an instance in one Availability 
     Zone by rapidly remapping the address to an instance in another Availability Zone.
 
-3) An Availability Zone is represented by a region codefollowed by a letter identifier; for example, us-east-1a. To ensure that resources are distributed across the Availability Zones for a region, AWS independently map Availability Zones to identifiers for each account. For example, your Availability Zone us-east-1a might not be the same location as us-east-1a for another account. There's no way for you to coordinate Availability Zones between accounts.
+3) An Availability Zone is represented by a region code followed by a letter identifier; for example, us-east-1a.
+To ensure that resources are distributed across the Availability Zones for a region, AWS independently map Availability Zones to identifiers for each account.
+For example, your Availability Zone us-east-1a might not be the same location as us-east-1a for another account. There's no way for you to coordinate Availability Zones between accounts.
    
 
 LoadBalancer:
@@ -29,7 +31,7 @@ Layer 4 Load Balancers:
 Layer 4 load balancers act upon data found in network and transport layer protocols (IP, TCP, FTP, UDP). 
 
 Layer 7 Load Balancers-
-Layer 7 load balancers distribute requests based upon data found in application layer protocols such as HTTP.CSYE 6225, Fall 2018, Tejas Parikh, Northeastern University12
+Layer 7 load balancers distribute requests based upon data found in application layer protocols such as HTTP. 
 
 requests distributon algorithms
 
@@ -38,12 +40,16 @@ requests distributon algorithms
 3) least connections
 4) least response time
 
-Layer 7 load balancers can further distribute requests based on application specific data such as HTTP headers, cookies, or data within the application message itself, such as the value of a specific parameter.CSYE 6225, Fall 2018, Tejas Parikh, Northeastern University13
-
+Layer 7 load balancers can further distribute requests based on application
+specific data such as HTTP headers, cookies, or data within the application message itself,
+such as the value of a specific parameter.
 
 --->> Classic Load balancer:
 
-The Classic Load Balancer routes traffic based on application or network level information and is ideal for simple load balancing of traffic across multiple EC2 instances where high availability, automatic scaling, and robust security are required.CSYE 6225, Fall 2018, Tejas Parikh, Northeastern University15
+The Classic Load Balancer routes traffic based on application or
+network level information and is ideal for simple load balancing 
+of traffic across multiple EC2 instances where high availability, 
+automatic scaling, and robust security are required.
 
 --->> features?
 
@@ -58,7 +64,11 @@ High Availability
 
 ---->>Application Load Balancer
 
-An Application Load Balancer is a load balancing option for the Elastic Load Balancing service that operates at the application layer and allows you to define routing rules based on content across multiple services or containers running on one or more Amazon Elastic Compute Cloud (Amazon EC2) instances.
+An Application Load Balancer is a load balancing option for the 
+Elastic Load Balancing service that operates at the application 
+layer and allows you to define routing rules based on content across 
+multiple services or containers running on one or more 
+Amazon Elastic Compute Cloud (Amazon EC2) instances.
 
 features:
 
@@ -78,10 +88,10 @@ features:
 Load balancer features:
 
 1) Assymetric load
-2) DDOs tack protection 
-3) HTtP compression  ----------> ??
+2) DDOs attack protection 
+3) HTTP compression  ----------> ??
 
----->> network lod balanacer
+---->> network load balancer
 
 1)  Network Load Balancer operates at the connection level (Layer 4), routing connections to targets -Amazon EC2 instances, containers and IP addresses based on IP protocol data.
 2)  Ideal for load balancing of TCP traffic, Network Load Balancer is capable of handling millions of requests per second while maintaining ultra-low latencies. 
@@ -98,8 +108,8 @@ You can load balance TCP traffic, routing connections to targets -Amazon EC2 ins
 Network Load Balancer preserves the client side source IP allowing the back-end to see the IP address of the client.
 
 •Static IP support:
-
 Network Load Balancer automatically provides a static IP per Availability Zone (subnet) that can be used by applications as the front-end IP of the load balancer.
+
 •Long-lived TCP Connections:
 Network Load Balancer supports long-lived TCP connections that are ideal for WebSockettype of applications.
 
@@ -110,7 +120,11 @@ Network Load Balancer uses the same API as Application Load Balancer. This will 
 
 AutoScaling:
 
-Autoscaling is a method used in cloud computing, whereby the amount of computational resources in a server farm, typically measured in terms of the number of active servers, scales automatically based on the load on the farm. •It is closely related to, and builds upon, the idea of load balancing
+Autoscaling is a method used in cloud computing, whereby the amount of 
+computational resources in a server farm, typically measured in terms of
+the number of active servers, scales automatically based on the load on the farm.
+
+•It is closely related to, and builds upon, the idea of load balancing
 
 Auto Scaling detects impaired compute instances and unhealthy applications, and replace the instances without human intervention ensuring that your application is getting the compute capacity it needs
 
@@ -119,7 +133,6 @@ Auto Scaling detects impaired compute instances and unhealthy applications, and 
 3. Balance capacity across Availability Zones
 
 Dynamic scaling:
-
 
 
 Scaling policies:
@@ -137,8 +150,11 @@ scale out ---- > to create the ec2  instances
 
 scale in ----> to delete the ec2 instances
 
-The cooldown period is a configurable setting for your Auto Scaling group that helps to ensure that it doesn't launch or terminate additional instances before the previous scaling activity takes effect. •After the Auto Scaling group dynamically scales using a simple scaling policy, it waits for the cooldown period to complete before resuming scaling activities.•Cooldown periods are notsupported for scheduled scaling.CSYE 6225, Fall 2018, Tejas Parikh, Northeastern University36
-
+The cooldown period is a configurable setting for your Auto Scaling group that helps to ensure
+that it doesn't launch or terminate additional instances before the previous scaling activity takes effect.
+•After the Auto Scaling group dynamically scales using a simple scaling policy, it waits for the cooldown period
+to complete before resuming scaling activities.
+•Cooldown periods are notsupported for scheduled scaling.
 
 Content Delivery Network (CDN)
 
@@ -232,14 +248,15 @@ CLOUD and Application security
 
 Attack Vectors:
 
-a) An attack vector is a path or means by which a hacker can gain access to a computer or network server in order to deliver a payload or malicious outcome.
+a) An attack vector is a path or means by which a hacker can gain access to a computer or network server in order
+ to deliver a payload or malicious outcome.
 
 b) Attack vectors enable hackers to exploit system vulnerabilities, including the human element.
 
 
 Risk: Risk is the possibility of loss or harm arising from performing an activity
 
-Security ControlsSecurity:  controls are countermeasures used to prevent or respond to security threats and to reduce or avoid risk
+Security Controls : Security controls are countermeasures used to prevent or respond to security threats and to reduce or avoid risk
 
 Threat Agent :A threat agent is an entity that poses a threat because it is capable of carrying out an attack
 
@@ -249,14 +266,14 @@ CLOUD SECURITY THREATS:
 1) Traffic eaves dropping : when data is being transferred to or within a cloud service is passively itercepted
                             compromise the confidentiality of the data, bcz of the passive nature attack go undeteceted?
 
-2) Malicious Intermediary : when msgs are intercepted andlatered by a malicious service agent, compromising the messege confidentiality
+2) Malicious Intermediary : when msgs are intercepted and altered by a malicious service agent, compromising the messege confidentiality
                             may also insert harmful data
 
 3) Insufficient Authorization: when access is granted to an attacker erroneously, resulting in the exposure to
                             IT resources that are normally protected.
 
-4) Denial of Service: purpose of this attack is to overlaod the resources to the point where they cannot function properly. Can be launched in 
-                    the following way
+4) Denial of Service: purpose of this attack is to overlaod the resources to the point where they cannot function properly.
+                    Can be launched in the following way
 
 5) Flawed Implementation: substandard design, Implementation or configuration of service and its deployment can have undesirable consequences.
                           inherent flaws can have vulnerabilities, and have potential risks
@@ -283,12 +300,13 @@ Symmetric Encryption: symmetric encryption uses the same key for both encryption
 Assymetric Encryption : relies on use of 2 diff keys, namesly private and public
                         it is also refered to as public key cryptography,
                        a) Private key: only owner has it,
-                       b) Public key : commonly available
+                       b) Public key : commonly available via ??
 
-                       a document that was encrpted with aprivate key can only be correctly
+                       a document that was encrpted with a private key can only be correctly
                        decrypted with the corresponding public key?
 
-                       conversly , document that was encrypted with the public key can be decrypted only by its private counter parties
+                       conversly , document that was encrypted with the public key 
+                       can be decrypted only by its private counter parties
 
                        thats why 2 diff keys, it is always computaionally slower then the symmetric encryption
 
@@ -296,7 +314,7 @@ Assymetric Encryption : relies on use of 2 diff keys, namesly private and public
 Securing Web Based Data transission:
 
 secure web based data transmission is applied via https
-https--- > uses SSL/TLS (transport layer securoty) a successor of ssl.
+https--- > uses SSL/TLS (transport layer security) a successor of ssl.
 
             assym more time, TLS uses asym for key exchange then TLS change to key exchange method
 
@@ -310,14 +328,16 @@ Hashing: The hashing mechanism is used when a one-way, non-reversible form of da
 
         Hashing can be used to derive a message digest from a message, which is often of a fixed length and smaller than the original message.
 
-        The message sender can then utilize the hashing mechanism to attach the message digest to the message. •The recipient applies the same
-         hash function to the message to verify that the produced message digest is identical to the one that accompanied the message.
+        The message sender can then utilize the hashing mechanism to attach the message digest to the message.
+         •The recipient applies the same hash function to the message to verify that the produced message digest is identical to the one that accompanied the message.
          •Any alteration to the original data results in an entirely different message digest and clearly indicates that tampering has occurred
 
 Digital signature:
 A message is assigned a digital signature prior to transmission, which is then rendered invalid if the message experiences any subsequent, unauthorized modifications.
 Both hashing and asymmetrical encryption are involved in the creation of a digital signature, which essentially exists as a message digest that was encrypted by a private key and appended to the original message.
-The recipient verifies the signature validity and uses the corresponding public key to decrypt the digital signature, which produces the message digest. •The hashing mechanism can also be applied to the original message to produce this message digest. Identical results from the two different processes indicate that the message maintained its integrity.
+The recipient verifies the signature validity and uses the corresponding public key to decrypt the digital signature, which produces the message digest.
+•The hashing mechanism can also be applied to the original message to produce this message digest.
+ Identical results from the two different processes indicate that the message maintained its integrity.
 
 
 Hardening is the process of stripping unnecessary software from a system to limit potential vulnerabilities that can be exploited by attackers.
@@ -346,7 +366,7 @@ COntainers:
 Ease of Deployment 
 
 isolation
-efefceinvy
+effeciency
 better packing
 
 containers are nothing but a process on linux
